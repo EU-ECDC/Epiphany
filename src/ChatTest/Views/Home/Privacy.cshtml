@@ -1,0 +1,15 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    No prompts are saved on the ECDC servers.
+    <br/>
+    This proof of concept uses Microsoft's <a href="https://azure.microsoft.com/en-us/products/cognitive-services/openai-service" target="_blank">Azure OpenAI Service</a><!-- (model <a href="https://learn.microsoft.com/en-us/azure/cognitive-services/openai/concepts/models" target="_blank"><span class="fst-italic">@Configuration["Azure:OpenAI:ModelName"]</span></a>)-->.
+    <br/>
+    <a href="https://learn.microsoft.com/en-us/legal/cognitive-services/openai/data-privacy?context=%2Fazure%2Fcognitive-services%2Fopenai%2Fcontext%2Fcontext" target="_blank">Data, privacy, and security for Azure OpenAI Service - Azure Cognitive Services | Microsoft Learn</a>
+</p>

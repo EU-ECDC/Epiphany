@@ -1,0 +1,42 @@
+﻿@model AIModel
+
+@{
+    ViewData["Title"] = "Home";
+    string modelParam = (!string.IsNullOrEmpty(Context.Request.Query["model"]) && new string[] { "epi", "generic" }.Contains(Context.Request.Query["model"].ToString().ToLower())) ? Context.Request.Query["model"] : "generic";
+    string modelType = ("epi" == modelParam.ToLower()) ? AskModelType.Epi : AskModelType.Generic;
+
+    string otherModelTypeName = (AskModelType.Epi == modelType) ? "GenAI" : "EpiAI";
+    string otherModelTypeParam = ((AskModelType.Epi == modelType) ? AskModelType.Generic : AskModelType.Epi).ToLower();
+
+    var greeting = await Model.AskTheMachine(modelType, "Say your name and tell a short greeting line (maximum 25 words, including, if possible, what you do) addressed to a person visiting the ECDC's AI test website. Make sure that your name (and only your name) is enclose in a 'strong' html tag.");
+}
+
+<div>
+    
+    <div class="text-center">
+        <h3 class="display-6">Epiphany (beta)</h3>
+        <br/>
+        <div style="float:right; font-size: 0.85em; padding-top:0.3em; padding-right: 0.3em;"><a href="?model=@otherModelTypeParam"><span class="bi bi-arrow-left-right" style="margin-right: 0.5em; margin-left: 1em;"></span>switch to @otherModelTypeName</a></div>
+        <div style="text-align: left !important; font-size: 0.9em; padding-left: 1em; margin-bottom: 5pt;">@Html.Raw(System.Net.WebUtility.HtmlDecode(@greeting))</div>
+        
+        <form class="form-inline">
+            <div class="form-group">
+                <textarea class="form-control" id="prompt" rows="5" placeholder="Please enter your question here..."></textarea>
+            </div>
+            <div style="font-size: 80%; text-align: justify; padding: 1em 0em; color: #777; margin-top: 15px;">You are welcome to use the ECDC’s AI playground to familiarise yourself on the use of AI tools. However, the tool shall not be used to generate content with the purpose of reusing it as part of ECDC outputs. Uploading in the prompt personal data or other types of sensitive non classified or otherwise confidential information is not allowed.</div>
+            <br/>
+            <button id="ask" type="submit" class="btn btn-lg btn-outline-success" onclick="return doAsk();"><span class="bi-binoculars"></span> Ask the machine!</button>
+        </form>
+    </div>
+
+    <div id="responseMain" class="text-left d-none">
+        <div class="form-group">
+            <span class="bi bi-robot" style="font-size: 1.5rem;"></span> The machine said:
+            <blockquote id="response" class="blockquote border border-info-subtle bg-light fs-6 fst-italic"></blockquote>
+        </div>
+    </div>
+
+    <br/>
+    
+</div>
+
