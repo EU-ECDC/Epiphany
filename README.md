@@ -40,7 +40,7 @@ Epiphany is a tool designed to promote understanding and experimentation with ge
 
 ## License
 
-Details are available in the `LICENSE.txt` file.
+Details are available in the [LICENSE.txt](./LICENSE.txt) file.
 
 ## Authors and Acknowledgments
 
