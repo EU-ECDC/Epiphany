@@ -1,0 +1,6 @@
+# This CODEOWNERS file defines individuals or teams responsible for code in this repository.
+# When a pull request modifies code in the 'main' branch, the designated owners must approve it.
+# Used in conjunction with branch protection rules to enforce review by code owners on protected branches like 'main'.
+
+# Make the team the owner of everything in the repository
+*       @eu-ecdc/ecdc-solution-architects
