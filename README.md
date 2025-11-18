@@ -2,6 +2,10 @@
 
 Epiphany is a tool designed to promote understanding and experimentation with generative artificial intelligence (AI) models in a secure environment. It was initially developed for ECDC staff and is now shared as an open-source project.
 
+> ## Retirement notice
+> The project is no longer maintained or supported, and no updates or security fixes will be provided.
+> Use it only for reference or archival purposes.
+
 ## Features
 
 - **Dual Assistants**:
